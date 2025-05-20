@@ -120,6 +120,7 @@ header {
   margin: auto;
   margin-bottom: 40px ;
   margin-top: 15px;
+  cursor: pointer;
 }
 
 .busca-form button h1{
