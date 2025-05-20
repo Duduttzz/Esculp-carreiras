@@ -461,6 +461,10 @@ footer {
         display: none;
     }
 
+    .svg-inferior{
+      display: none;
+    }
+
     .divisor {
         max-width: 100%;
         padding: 10px 0;
