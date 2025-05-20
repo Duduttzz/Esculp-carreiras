@@ -19,6 +19,11 @@ body {
   color: #000;
 }
 
+main{
+  display: flex;
+  min-height: 75vh;
+}
+
 /* Header e logo */
 header {
   display: flex;
