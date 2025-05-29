@@ -80,6 +80,30 @@
     <div id="detalhes-vaga" class="vaga-detalhes">
       <p class="placeholder">Clique em uma vaga para ver os detalhes</p>
     </div>
+
+    <!-- modal de cadastro para vaga -->
+    <div id="formModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModalBtn">&times;</span>
+      <h2>Informações do Candidato</h2>
+      <form>
+        <label>Email:</label>
+        <input type="email" required />
+
+        <label>Telefone:</label>
+        <input type="tel" required />
+
+        <label>Currículo (PDF):</label>
+        <input type="file" accept=".pdf" required />
+
+        <label>Breve descrição sobre você (suas habilidades, qualidades, etc):</label>
+        <textarea rows="5" required></textarea>
+
+        <button type="submit" class="submit-btn">Enviar</button>
+      </form>
+    </div>
+  </div>
+
   </main>
 
   <footer>
@@ -90,83 +114,178 @@
     </footer>
 
   <script>
-    const vagas = [
-      {
-        titulo: "Secretário Executivo",
-        empresa: "Omega Services",
-        descricao: `
-          <section class="details">
-            <h4>📄 Descrição da vaga</h4>
-            <p>
-              A Omega Services está procurando um Secretário Executivo organizado e eficiente para dar suporte à nossa equipe de executivos. O candidato ideal será responsável por gerenciar agendas, organizar reuniões, preparar relatórios e atuar como ponto de contato entre a diretoria e outros departamentos.<br>
-              <br>
-              <strong>Início:</strong> Fevereiro de 2024
-            </p>
-          </section>
-          <section class="details">
-            <h4>🧭 Responsabilidades</h4>
-            <ul>
-              <li>Gerenciar agendas e compromissos dos executivos</li>
-              <li>Organizar reuniões e atas</li>
-              <li>Preparar relatórios e apresentações</li>
-              <li>Coordenar viagens e hospedagens</li>
-              <li>Manter e organizar arquivos e documentos confidenciais</li>
-              <li>Realizar tarefas administrativas gerais para apoiar a equipe executiva</li>
-            </ul>
-          </section>
-          <section class="details">
-            <h4>📝 Requisitos</h4>
-            <ul>
-              <li>Graduação em Administração ou áreas afins</li>
-              <li>Proficiente em MS Office (Word, Excel, PowerPoint)</li>
-              <li>Excelentes habilidades organizacionais</li>
-            </ul>
-          </section>
-          <div class="botoes-acao">
-            <button class="btn-candidatar">Candidatar-se</button>
-            <button class="btn-salvar">Salvar vaga</button>
-          </div>
-        `
-      },
-      {
-        titulo: "Assistente Administrativo",
-        empresa: "Future Corp",
-        descricao: `
-          <section class="details">
-            <h4>📄 Descrição da vaga</h4>
-            <p>
-              Atuar nas rotinas administrativas da empresa, apoiando o setor financeiro, RH e atendimento.<br><br>
-              <strong>Início:</strong> Março de 2024
-            </p>
-          </section>
-          <section class="details">
-            <h4>🧭 Responsabilidades</h4>
-            <ul>
-              <li>Lançamento de dados em planilhas</li>
-              <li>Atendimento telefônico e presencial</li>
-              <li>Organização de documentos</li>
-            </ul>
-          </section>
-          <section class="details">
-            <h4>📝 Requisitos</h4>
-            <ul>
-              <li>Ensino médio completo</li>
-              <li>Conhecimento básico em Excel</li>
-              <li>Boa comunicação</li>
-            </ul>
-          </section>
-          <div class="botoes-acao">
-            <button class="btn-candidatar">Candidatar-se</button>
-            <button class="btn-salvar">Salvar vaga</button>
-          </div>
-        `
-      }
-    ];
+    // Dados das vagas
+const vagas = [
+  {
+    titulo: "Secretário Executivo",
+    empresa: "Omega Services",
+    descricao: `
+      <section class="details">
+        <h4>📄 Descrição da vaga</h4>
+        <p>
+          A Omega Services está procurando um Secretário Executivo organizado e eficiente para dar suporte à nossa equipe de executivos. O candidato ideal será responsável por gerenciar agendas, organizar reuniões, preparar relatórios e atuar como ponto de contato entre a diretoria e outros departamentos.<br>
+          <br>
+          <strong>Início:</strong> Fevereiro de 2024
+        </p>
+      </section>
+      <section class="details">
+        <h4>🧭 Responsabilidades</h4>
+        <ul>
+          <li>Gerenciar agendas e compromissos dos executivos</li>
+          <li>Organizar reuniões e atas</li>
+          <li>Preparar relatórios e apresentações</li>
+          <li>Coordenar viagens e hospedagens</li>
+          <li>Manter e organizar arquivos e documentos confidenciais</li>
+          <li>Realizar tarefas administrativas gerais para apoiar a equipe executiva</li>
+        </ul>
+      </section>
+      <section class="details">
+        <h4>📝 Requisitos</h4>
+        <ul>
+          <li>Graduação em Administração ou áreas afins</li>
+          <li>Proficiente em MS Office (Word, Excel, PowerPoint)</li>
+          <li>Excelentes habilidades organizacionais</li>
+        </ul>
+      </section>
+      <div class="botoes-acao">
+        <button class="btn-candidatar">Candidatar-se</button>
+        <button class="btn-salvar">Salvar vaga</button>
+      </div>
+    `
+  },
+  {
+    titulo: "Assistente Administrativo",
+    empresa: "Future Corp",
+    descricao: `
+      <section class="details">
+        <h4>📄 Descrição da vaga</h4>
+        <p>
+          Atuar nas rotinas administrativas da empresa, apoiando o setor financeiro, RH e atendimento.<br><br>
+          <strong>Início:</strong> Março de 2024
+        </p>
+      </section>
+      <section class="details">
+        <h4>🧭 Responsabilidades</h4>
+        <ul>
+          <li>Lançamento de dados em planilhas</li>
+          <li>Atendimento telefônico e presencial</li>
+          <li>Organização de documentos</li>
+        </ul>
+      </section>
+      <section class="details">
+        <h4>📝 Requisitos</h4>
+        <ul>
+          <li>Ensino médio completo</li>
+          <li>Conhecimento básico em Excel</li>
+          <li>Boa comunicação</li>
+        </ul>
+      </section>
+      <div class="botoes-acao">
+        <button class="btn-candidatar">Candidatar-se</button>
+        <button class="btn-salvar">Salvar vaga</button>
+      </div>
+    `
+  }
+];
 
-    function mostrarDetalhes(index) {
-      const container = document.getElementById("detalhes-vaga");
-      container.innerHTML = vagas[index].descricao;
+// Exibe os detalhes da vaga
+function mostrarDetalhes(index) {
+  const cards = document.querySelectorAll(".card");
+  const isMobile = window.innerWidth <= 768;
+  const card = cards[index];
+
+  // Remove descrições anteriores, se houver
+  const detalhesAnteriores = document.querySelector(".detalhes-inseridos");
+  if (detalhesAnteriores) {
+    detalhesAnteriores.remove();
+  }
+
+  const containerLateral = document.getElementById("detalhes-vaga");
+  const novoDetalhe = document.createElement("div");
+  novoDetalhe.className = "detalhes-inseridos";
+  novoDetalhe.innerHTML = vagas[index].descricao;
+
+  if (isMobile) {
+    // Insere logo abaixo do card clicado
+    card.insertAdjacentElement("afterend", novoDetalhe);
+  } else {
+    // Insere na coluna lateral (comportamento normal)
+    containerLateral.innerHTML = vagas[index].descricao;
+  }
+
+  // Ativa botão "Candidatar-se"
+  setTimeout(() => {
+    const btnCandidatar = document.querySelector(".detalhes-inseridos .btn-candidatar") ||
+                          containerLateral.querySelector(".btn-candidatar");
+    if (btnCandidatar) {
+      btnCandidatar.addEventListener("click", () => {
+        document.getElementById("formModal").style.display = "block";
+      });
     }
+  }, 0);
+}
+
+
+// Controle do modal e envio do formulário
+document.addEventListener("DOMContentLoaded", () => {
+  const openModalBtn = document.getElementById("openModalBtn");
+  const modal = document.getElementById("formModal");
+  const closeModalBtn = document.getElementById("closeModalBtn");
+  const form = document.querySelector("form");
+  const confirmationBox = document.createElement("div");
+
+  // Abre o modal (botão fixo, se existir)
+  if (openModalBtn) {
+    openModalBtn.addEventListener("click", () => {
+      modal.style.display = "block";
+    });
+  }
+
+  // Fecha o modal
+  closeModalBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  // Fecha clicando fora
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+
+  // Envio do formulário
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // Mostra mensagem de confirmação
+    confirmationBox.textContent = "✔ Formulário enviado com sucesso!";
+    confirmationBox.className = "confirmation";
+    form.appendChild(confirmationBox);
+
+    // Limpa os campos
+    form.reset();
+
+    // Oculta a mensagem e o modal depois de 3 segundos
+    setTimeout(() => {
+      modal.style.display = "none";
+      confirmationBox.remove();
+    }, 3000);
+  });
+});
+
+window.addEventListener("resize", () => {
+  const isMobile = window.innerWidth <= 768;
+
+  // Se ficou grande, remove o conteúdo inserido no mobile
+  if (!isMobile) {
+    const detalheMobile = document.querySelector(".detalhes-inseridos");
+    if (detalheMobile) {
+      detalheMobile.remove();
+    }
+  }
+});
+
+
   </script>
 
   <style>
@@ -201,6 +320,107 @@
       margin-top: 20px;
     }
 
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto; /* ⚠️ Permite rolagem da área do modal */
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px 0; /* espaço para o conteúdo não colar nas bordas */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  max-height: 90vh; /* ⚠️ Limita a altura para não ultrapassar a tela */
+  overflow-y: auto; /* ⚠️ Permite rolar dentro do modal se for necessário */
+  }
+
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.modal-content label{
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+.modal-content input,
+.modal-content textarea {
+  min-width: 100%;
+  max-width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.modal-content input[type="file"] {
+  padding: 5px;
+}
+
+.close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.submit-btn {
+  background-color: black;
+  color: white;
+  border: none;
+  position: center;
+  padding: 10px 16px;
+  margin-bottom: 5px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+
+}
+
+.modal::-webkit-scrollbar {
+  display: none;          /* Chrome, Safari e outros WebKit */
+}
+
+.modal-content::-webkit-scrollbar {
+  display: none;          /* Chrome, Safari e outros WebKit */
+}
+
+.confirmation {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background-color: #2754f8a0; /* verde claro */
+  color: white;            /* verde escuro (texto) */
+  border-radius: 6px;
+  font-size: 0.9em;
+  font-weight: bold;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Animação opcional */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
     /* Restante dos estilos fica no seu style.css */
   </style>
 

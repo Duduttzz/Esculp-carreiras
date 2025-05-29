@@ -14,6 +14,10 @@
   font-family: 'Satoshi', sans-serif;
 }
 
+*::-webkit-scrollbar {
+  display: none;          /* Chrome, Safari e outros WebKit */
+}
+
 body {
   background-color: #fff;
   color: #000;
@@ -371,32 +375,130 @@ footer {
   color: white;
 }
 
-@media (max-width: 840px) {
-  .svg-inferior{
+@media (max-width: 900px) {
+  main {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .vagas-lista,
+  .vaga-detalhes {
+    width: 100%;
+  }
+
+  .card p {
+    max-width: 100%;
+  }
+}
+
+/* Telas até 600px: ajustes gerais para mobile */
+@media (max-width: 600px) {
+  /* Header */
+  header {
+    padding: 10px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .site-nome {
+    font-size: 22px;
+  }
+
+  /* Barra de busca */
+  .buscar-container {
+    padding: 20px;
+    height: auto;
+  }
+
+  .buscar-container h1 {
+    font-size: 1.5em;
+  }
+
+  .busca-form {
+    width: 100%;
+  }
+
+  .busca-form input {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .busca-form button {
+    padding: 12px 24px;
+  }
+
+  .busca-form button h1 {
+    font-size: 0.9em;
+  }
+
+  /* Cards */
+  .vagas-lista {
+    padding: 0;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+  }
+
+  .card-footer {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .card p {
+    font-size: 0.85em;
+    word-break: break-word;
+    max-width: 100%;
+    margin: 10px;
+  }
+
+  /* Botões */
+  .btn-apply {
+    width: 100%;
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .btn {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+
+  /* Ícones de perfil */
+  .icone-perfil {
+    margin: 5px 0;
+  }
+
+  /* Oculta SVG de fundo */
+  .svg-inferior {
     display: none;
   }
+}
 
-  .site-header{
-    max-height: max-content;
+/* Fonte fluida como exemplo */
+.buscar-container h1 {
+  font-size: clamp(1.5rem, 5vw, 2em);
+}
+
+/* Ajuste geral para o card */
+.card {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* Esconde a coluna de detalhes lateral em telas pequenas */
+@media (max-width: 768px) {
+  #detalhes-vaga {
+    display: none !important;
   }
+}
 
-  .buscar-container{
-    height: 70vh;
+/* Mostra novamente em telas maiores */
+@media (min-width: 769px) {
+  #detalhes-vaga {
+    display: block;
   }
-}
-
-.icone-perfil {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  margin: 10px;
-}
-
-.perfil-icon {
-  fill: var(--cor2);
-  transition: fill 0.3s ease;
-}
-
-.icone-perfil:hover .perfil-icon {
-  fill: var(--cor1); /* azul no hover */
 }
